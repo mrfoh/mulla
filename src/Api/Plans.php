@@ -94,7 +94,7 @@ class Plans extends Endpoint
      */
     public function list(array $queryParams = [])
     {
-        return $this->makeRequest('GET', [], null)
+        return $this->makeRequest('GET', [], null, $queryParams)
             ->getRequestResponse()
             ->getResponsePayload();
     }
