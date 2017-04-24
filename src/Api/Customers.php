@@ -56,7 +56,7 @@ class Customers extends Endpoint
   {
     return $this->makeRequest('GET', [], null, ["perPage" => $perPage, "page" => $page])
         ->getRequestResponse()
-        ->getResponseData();
+        ->getResponsePayload();
   }
 
 

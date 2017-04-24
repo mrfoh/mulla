@@ -35,7 +35,7 @@ class Endpoint
 
   /**
   * Http Client
-  * @var GuzzleHttp/Client
+  * @var GuzzleHttp\Client
   */
   protected $httpClient;
 
@@ -95,7 +95,7 @@ class Endpoint
    * @param string $requestPath
    * @param array $urlQueryParams
    * @throws NullMethodException
-   * @throws GuzzleHttp/ClientException
+   * @throws GuzzleHttp\ClientException
    * @return $this
    */
   public function makeRequest($requestMethod, $requestBody = [], $requestPath = null, $urlQueryParams = [])

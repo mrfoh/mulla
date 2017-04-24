@@ -121,7 +121,7 @@ class Transaction extends Endpoint
 
         return $this->makeRequest('GET', [], null, $queryParams)
             ->getRequestResponse()
-            ->getResponseData();
+            ->getResponsePayload();
     }
 
     /**
@@ -149,6 +149,12 @@ class Transaction extends Endpoint
         return $this->makeRequest('POST', $data, "charge_authorization")->getRequestResponse()->getResponseData();
     }
 
+    /**
+     * Request reauthorization
+     * @param array $data
+     * @return array
+     * @throws InvalidRequestException
+     */
     public function requestReauthorization(array $data)
     {
         $validationErrors = $this->validateAuthorizationData($data);
