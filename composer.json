@@ -14,6 +14,7 @@
             "email": "patrickfoh@gmail.com"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
         "illuminate/database": "~5.3",
         "illuminate/support": "~5.1",
