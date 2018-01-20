@@ -83,7 +83,7 @@ class Subscriptions extends Endpoint
     {
         $data = ['code' => $code, 'token' => $token];
 
-        return $this->makeRequest('POST', $data, "disabled")
+        return $this->makeRequest('POST', $data, "disable")
             ->getRequestResponse()
             ->getResponsePayload();
     }
