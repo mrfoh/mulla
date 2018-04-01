@@ -5,6 +5,7 @@ namespace Mrfoh\Mulla\Api;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Support\Facades\Config;
+use Mrfoh\Mulla\Exceptions\InvalidResponseException;
 use Mrfoh\Mulla\Exceptions\NullMethodException;
 
 class Endpoint
@@ -146,5 +147,21 @@ class Endpoint
     protected function getResponsePayload()
     {
         return $this->response;
+    }
+
+    /**
+     * @throws InvalidResponseException
+     */
+    protected function handleResponse()
+    {
+        if (!isset($this->response['status'])) {
+            throw new InvalidResponseException("No status returned from payment gateway");
+        } else {
+            if ($this->response['status'] === true) {
+                return $this->getResponseData();
+            } else {
+                throw new InvalidResponseException($this->response['message']);
+            }
+        }
     }
 }
