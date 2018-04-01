@@ -32,6 +32,8 @@ class Subscriptions extends Endpoint
      * @param array $data
      * Request data; customer, plan, authorization
      * @return array
+     * @throws \Mrfoh\Mulla\Exceptions\InvalidResponseException
+     * @throws InvalidRequestException
      */
     public function create(array $data)
     {
@@ -41,9 +43,10 @@ class Subscriptions extends Endpoint
             throw new InvalidRequestException("Invalid request", $validate);
         }
 
-        return $this->makeRequest('POST', $data, null)
-            ->getRequestResponse()
-            ->getResponseData();
+        $this->makeRequest('POST', $data, null)
+            ->getRequestResponse();
+
+        return $this->handleResponse();
     }
 
     /**
